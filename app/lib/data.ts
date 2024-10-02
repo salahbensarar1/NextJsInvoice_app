@@ -11,15 +11,18 @@ import { formatCurrency } from './utils';
 
 export async function fetchRevenue() {
   try {
+    
+    //Here, you've added an artificial 3-second delay to simulate a slow data fetch. 
+    // The result is that now your whole page is blocked from showing UI to the visitor while the data is being fetched. 
+    // Which brings us to a common challenge developers have to solve:
     // Artificially delay a response for demo purposes.
     // Don't do this in production :)
-
-    // console.log('Fetching revenue data...');
-    // await new Promise((resolve) => setTimeout(resolve, 3000));
+    console.log('Fetching revenue data...');
+    await new Promise((resolve) => setTimeout(resolve, 3000));
 
     const data = await sql<Revenue>`SELECT * FROM revenue`;
 
-    // console.log('Data fetch completed after 3 seconds.');
+    console.log('Data fetch completed after 3 seconds.');
 
     return data.rows;
   } catch (error) {
