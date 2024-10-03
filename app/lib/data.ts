@@ -12,7 +12,7 @@ import { formatCurrency } from './utils';
 export async function fetchRevenue() {
   try {
     
-    //Here, you've added an artificial 3-second delay to simulate a slow data fetch. 
+    //Here, you've added an artificial 3-second delay to simulate a slow data fetch.
     // The result is that now your whole page is blocked from showing UI to the visitor while the data is being fetched. 
     // Which brings us to a common challenge developers have to solve:
     // Artificially delay a response for demo purposes.
@@ -59,9 +59,9 @@ export async function fetchCardData() {
     const invoiceCountPromise = sql`SELECT COUNT(*) FROM invoices`;
     const customerCountPromise = sql`SELECT COUNT(*) FROM customers`;
     const invoiceStatusPromise = sql`SELECT
-         SUM(CASE WHEN status = 'paid' THEN amount ELSE 0 END) AS "paid",
-         SUM(CASE WHEN status = 'pending' THEN amount ELSE 0 END) AS "pending"
-         FROM invoices`;
+        SUM(CASE WHEN status = 'paid' THEN amount ELSE 0 END) AS "paid",
+        SUM(CASE WHEN status = 'pending' THEN amount ELSE 0 END) AS "pending"
+        FROM invoices`;
 
     const data = await Promise.all([
       invoiceCountPromise,
